@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CaesarConsole
 {
@@ -8,20 +9,24 @@ namespace CaesarConsole
         {
             Console.WriteLine("Enter your input here: ");
             string inputMessage = Console.ReadLine();
-            string outputMessage = RotCaesar(inputMessage);
-            Console.WriteLine("Rotated by 13 is: " +outputMessage);
+            //string outputMessage = RotCaesar(inputMessage);
+            //Console.WriteLine("Rotated by 13 is: " +outputMessage);
             Console.ReadLine();
         }
 
-        private static string RotCaesar(string inputMessage)
+        public static int RotCaesar(string inputMessage)
         {
             string alphabet = "abcdefghijklmnopqrstuvwxyz";
-            int char_position;
+            int char_position = 0;
 
-            for (int i = 0; i < inputMessage.Length; i++)
+            foreach (char characters in inputMessage)
             {
-
+                char_position += alphabet.IndexOf(characters);
             }
+
+            Console.WriteLine(char_position);
+            Console.ReadLine();
+            return char_position;
         }
     }
 }
