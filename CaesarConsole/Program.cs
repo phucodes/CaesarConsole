@@ -11,8 +11,9 @@ namespace CaesarConsole
         {
             Console.WriteLine("Enter your input here: ");
             string inputMessage = Console.ReadLine();
-            // string outputMessage = RotCaesar(inputMessage);
-            // Console.WriteLine("Rotated by 13 is: " +outputMessage);
+             
+            string outputMessage = RotCaesar(inputMessage);
+            Console.WriteLine("Rotated by 13 is: " + outputMessage);
             Console.ReadLine();
         }
 
@@ -20,8 +21,10 @@ namespace CaesarConsole
         {
             string alphabet = "abcdefghijklmnopqrstuvwxyz";
             int char_pos = 0;
-            int inputLength = inputMessage.Length;
-            string [] char_arr = new string[inputLength]; // initialize an array same length as that of inputMessage
+            char rotated_char;
+            //int inputLength = inputMessage.Length;
+            //string [] char_arr = new string[inputLength]; // initialize an array same length as that of inputMessage
+            List<char> char_arr = new List<char>();
             //string empty = "";
 
             for (int i = 0; i < inputMessage.Length; i++) // loop through input message
@@ -37,13 +40,22 @@ namespace CaesarConsole
 
             if (char_rot < 26) // less than total amount of characters in English alphabet
             {
-                char rotated_char = alphabet[char_rot]; // return rotated characters index in English alphabet
+                rotated_char = alphabet[char_rot]; // return rotated characters index in English alphabet
             }
 
             else // wrap text from beginning of alphabet again
             {
-                char rotated_char = alphabet[char_rot % 26];  // TODO: add rotated to string for output
+                rotated_char = alphabet[char_rot % 26];  // TODO: add rotated to string for output
             }
+
+            for (int j = 0; j < char_arr.Count; j++)
+            {
+                char_arr.Add(rotated_char); // add rotated characters to List of chars
+            }
+
+            string ReturnString = string.Join("*", char_arr.ToArray());
+
+            return ReturnString;
         }
     }
 }
